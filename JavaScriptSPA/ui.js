@@ -7,6 +7,7 @@ const enable = document.getElementById("enable");
 const disable = document.getElementById("disable");
 const profileButton = document.getElementById("seeProfile");
 const profileDiv = document.getElementById("profile-div");
+const loadingScreen = document.getElementById("loadingScreen");
 
 
 function showWelcomeMessage(account) {

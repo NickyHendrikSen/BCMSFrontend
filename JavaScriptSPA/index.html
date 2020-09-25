@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
     <title>BCMS</title>
-    <link rel="SHORTCUT ICON" href="./favicon.svg" type="image/x-icon">
+    <link rel="SHORTCUT ICON" href="https://www.binus.edu/wp-content/uploads/2020/04/sitelogo-bina-nusantara.svg" type="image/x-icon">
     
     <!-- msal.min.js can be used in the place of msal.js; included msal.js to make debug easy -->
     <script type="text/javascript" src="https://alcdn.msauth.net/lib/1.4.0/js/msal.js" integrity="sha384-DqrejB/00ccJc4ufFWc+TA3ImOruMihWCj6Wu9hEzRUNdqt4180qlzT0mFa6/Zp2" crossorigin="anonymous"></script>
@@ -19,8 +19,16 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
   </head>
   <body>
-    <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
-      <a class="navbar-brand" href="/">BCMS</a>
+    <div id="loadingScreen" class="d-none">
+      <div class="loader"></div>
+    </div>
+    <nav class="navbar navbar-expand-lg navbar-dark">
+      <a class="navbar-brand" href="/">
+        <img src="https://www.binus.edu/wp-content/uploads/2020/04/sitelogo-bina-nusantara.svg"/>
+      </a>
+      <div id="title">
+        BINUS Business Card Automatic Transfer
+      </div>
       <div class="btn-group ml-auto dropleft">
         <button type="button" id="signIn" class="btn btn-secondary" onclick="signIn()">Sign In</button>
         <button type="button" id="signOut" class="btn btn-success d-none" onclick="signOut()">Sign Out</button>
@@ -29,7 +37,7 @@
     <br>
     <br>
     <div class="row" style="margin:auto" >
-    <div id="card-div" class="col-md-3 d-none">
+    <div id="card-div" class="w-75 d-none">
     <div class="card text-center">
       <div class="card-body">
         <h5 class="card-title" id="welcomeMessage">Please sign-in to see your profile and read your mails</h5>
@@ -38,10 +46,12 @@
           </div>
         </div>
         <br>
-        <br>
         <!-- <button class="btn btn-primary" id="seeProfile" onclick="seeProfile()">See Profile</button> -->
-        <br>
-        <br>
+          BINUS Business Card is a place to share business cards within organizations.
+          <br><br>
+          BINUS Business Card Automatic Transfer is a tool to run automatic transfer <a href="https://outlook.office.com/people/">Outlook Contacts</a> to BINUS Business Card.
+          You can check BINUS Business Card in this link <a href="http://portal.binus.edu/resources/Lists/BusinessCard/AllItems.aspx">KM Portal</a> & <a href="https://binusianorg.sharepoint.com/sites/NewPortal/resources/Lists/Business%20Card/All%20Items.aspx">SharePoint Online</a>.
+          <br><br>
         <button class="btn btn-primary d-none" id="enable" onclick="enableAccount()">Enable</button>
         <button class="btn btn-primary d-none" id="disable" onclick="disableAccount()">Disable</button>
       </div>
@@ -83,4 +93,58 @@
       }
     </script>
   </body>
+  <style>
+    body{
+      background-color: #f1f1f1;
+    }
+    .card-body{
+      width: 100%;
+    }
+    #card-div{
+      margin-left: 12.5%;
+      border: none !important;
+      box-shadow: 1px 2px 2px 0px rgba(0, 0, 0, 0.2);
+    }
+    nav{
+      display: flex;
+      justify-content: center;
+      background-color: white;
+      box-shadow: 1px 2px 2px 0px rgba(0, 0, 0, 0.2);
+    }
+    #title{
+      color: #00a9e2;
+      font-weight: bold;
+      font-size: 24px;
+    }
+    #loadingScreen{
+        position: fixed;
+        width: 100%;
+        height: 100vh;
+        background-color: rgba(63, 63, 63, 0.562);
+        z-index: 1000;
+        
+    }
+    .loader {
+          position: absolute;
+          top: calc(50% - 60px);
+          left: calc(50% - 60px);
+          border: 16px solid #f3f3f3; /* Light grey */
+          border-top: 16px solid #00a9e2; /* Blue */
+          border-bottom: 16px solid #00a9e2; /* Blue */
+          border-radius: 50%;
+          width: 120px;
+          height: 120px;
+          animation: spin 1s linear infinite;
+      }
+    @keyframes spin {
+        0% { transform: rotate(0deg); }
+        100% { transform: rotate(360deg); }
+    }
+    @media screen and (max-width: 700px){
+      #card-div{
+        margin-left: 1% !important;
+        width: 98% !important;
+      }
+    }
+  </style>
 </html>

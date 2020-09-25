@@ -29,8 +29,6 @@ function authRedirectCallBack(error, response) {
           console.log(err)
         } finally {
           profileButton.classList.add('d-none');
-          disable.classList.remove('d-none');
-          enable.classList.remove('d-none');
         }
       } else {
           console.log("token type is:" + response.tokenType);
@@ -56,10 +54,14 @@ function getStatus(email){
       if(data == true){
         document.getElementById("status").innerHTML = "Enabled"
         document.getElementById("status").style.color = "green";
+        disable.classList.remove('d-none');
+        enable.classList.add('d-none');
       }
       else{
         document.getElementById("status").innerHTML = "Disabled"
         document.getElementById("status").style.color = "red";
+        enable.classList.remove('d-none');
+        disable.classList.add('d-none');
       }
     });
 }

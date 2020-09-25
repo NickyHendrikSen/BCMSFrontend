@@ -1,21 +1,35 @@
+var debounce = false;
 function enableAccount(){
-    // console.log(rawToken)
+  if(debounce)return;
+    debounce = false;
+    loadingScreen.classList.remove("d-none");
     postData(requestUrl + '/Contact/ChangeTransferStatus/enabled')
     .then(data => {
       if(data != null){
         document.getElementById("status").innerHTML = "Enabled"
         document.getElementById("status").style.color = "green";
+        disable.classList.remove("d-none");
+        enable.classList.add("d-none");
       }
+      debounce = true;
+      loadingScreen.classList.add("d-none");
     });
 }
 
 function disableAccount(){
+  if(debounce)return;
+    debounce = false;
+    loadingScreen.classList.remove("d-none");
     postData(requestUrl + '/Contact/ChangeTransferStatus/disabled')
     .then(data => {
       if(data != null){
         document.getElementById("status").innerHTML = "Disabled"
         document.getElementById("status").style.color = "red";
+        disable.classList.remove("d-none");
+        enable.classList.add("d-none");
       }
+      debounce = true;
+      loadingScreen.classList.add("d-none");
     });
 }
 
