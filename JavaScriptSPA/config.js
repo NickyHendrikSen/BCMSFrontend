@@ -1,1 +1,0 @@
-var requestUrl = "https://localhost:5001";
