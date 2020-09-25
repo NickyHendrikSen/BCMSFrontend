@@ -1,6 +1,6 @@
 function enableAccount(){
     // console.log(rawToken)
-    postData('https://localhost:5001/Contact/ChangeTransferStatus/enabled')
+    postData(requestUrl + '/Contact/ChangeTransferStatus/enabled')
     .then(data => {
       if(data != null){
         document.getElementById("status").innerHTML = "Enabled"
@@ -10,7 +10,7 @@ function enableAccount(){
 }
 
 function disableAccount(){
-    postData('https://localhost:5001/Contact/ChangeTransferStatus/disabled')
+    postData(requestUrl + '/Contact/ChangeTransferStatus/disabled')
     .then(data => {
       if(data != null){
         document.getElementById("status").innerHTML = "Disabled"

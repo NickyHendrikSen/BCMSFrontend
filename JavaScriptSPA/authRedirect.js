@@ -13,14 +13,14 @@ function authRedirectCallBack(error, response) {
       console.log(error);
   } else {
       if (response.tokenType === "id_token") {
-          console.log("id_token acquired at: " + new Date().toString()); 
+          // console.log("id_token acquired at: " + new Date().toString()); 
           
           if (myMSALObj.getAccount()) {
             showWelcomeMessage(myMSALObj.getAccount());
           }
 
       } else if (response.tokenType === "access_token") {
-        console.log("access_token acquired at: " + new Date().toString());
+        // console.log("access_token acquired at: " + new Date().toString());
         accessToken = response.accessToken;
         rawToken = response.idToken.rawIdToken;
         try {
@@ -51,7 +51,7 @@ function signOut() {
 }
 
 function getStatus(email){
-  postData('https://localhost:5001/Contact/GetStatus/' + email)
+  postData(requestUrl + '/Contact/GetStatus/' + email)
     .then(data => {
       if(data == true){
         document.getElementById("status").innerHTML = "Enabled"
