@@ -87,10 +87,12 @@ function getTokenRedirect(request, endpoint) {
               }
             }
         }
+        loadingScreen.classList.add("d-none")
       })
       .catch(error => {
           console.log("silent token acquisition fails. acquiring token using redirect");
           // fallback to interaction when silent call fails
+          loadingScreen.classList.add("d-none")
           return myMSALObj.acquireTokenRedirect(request);
       });
 }
