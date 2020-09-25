@@ -1,20 +1,26 @@
 function enableAccount(){
-    console.log(rawToken)
+    // console.log(rawToken)
     postData('https://localhost:5001/Contact/ChangeTransferStatus/enabled')
     .then(data => {
-      console.log(data); // JSON data parsed by `data.json()` call
+      if(data != null){
+        document.getElementById("status").innerHTML = "Enabled"
+        document.getElementById("status").style.color = "green";
+      }
     });
 }
 
 function disableAccount(){
     postData('https://localhost:5001/Contact/ChangeTransferStatus/disabled')
     .then(data => {
-      console.log(data); // JSON data parsed by `data.json()` call
+      if(data != null){
+        document.getElementById("status").innerHTML = "Disabled"
+        document.getElementById("status").style.color = "red";
+      }
     });
 }
 
 async function postData(url = '') {
-    console.log(rawToken)
+    // console.log(rawToken)
     // Default options are marked with *
     const response = await fetch(url, {
       method: 'POST', // *GET, POST, PUT, DELETE, etc.

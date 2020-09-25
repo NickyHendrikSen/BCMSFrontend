@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
-    <title>Quickstart | MSAL.JS Vanilla JavaScript SPA</title>
+    <title>BCMS</title>
     <link rel="SHORTCUT ICON" href="./favicon.svg" type="image/x-icon">
     
     <!-- msal.min.js can be used in the place of msal.js; included msal.js to make debug easy -->
@@ -27,17 +27,19 @@
     </div>
     </nav>
     <br>
-    <h5 class="card-header text-center">Vanilla JavaScript SPA calling MS Graph API with MSAL.JS</h5>
     <br>
     <div class="row" style="margin:auto" >
     <div id="card-div" class="col-md-3 d-none">
     <div class="card text-center">
       <div class="card-body">
         <h5 class="card-title" id="welcomeMessage">Please sign-in to see your profile and read your mails</h5>
-        <div id="profile-div"></div>
+        <div id="profile-div">
+          <div><strong>Status : </strong><p id="status" style="display:inline-block; font-weight:bold">Loading</p>
+          </div>
+        </div>
         <br>
         <br>
-        <button class="btn btn-primary" id="seeProfile" onclick="seeProfile()">See Profile</button>
+        <!-- <button class="btn btn-primary" id="seeProfile" onclick="seeProfile()">See Profile</button> -->
         <br>
         <br>
         <button class="btn btn-primary d-none" id="enable" onclick="enableAccount()">Enable</button>
@@ -73,5 +75,12 @@
     <script type="text/javascript" src="./authRedirect.js"></script>  
     <!-- <script type="text/javascript" src="./authPopup.js"></script> -->
     <script type="text/javascript" src="./graph.js"></script>
+    <script type="text/javascript">
+      try{
+        seeProfile();
+      }catch(e){
+        console.log("Error");
+      }
+    </script>
   </body>
 </html>

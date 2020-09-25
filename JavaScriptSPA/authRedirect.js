@@ -50,11 +50,24 @@ function signOut() {
   myMSALObj.logout();
 }
 
+function getStatus(email){
+  postData('https://localhost:5001/Contact/GetStatus/' + email)
+    .then(data => {
+      if(data == true){
+        document.getElementById("status").innerHTML = "Enabled"
+        document.getElementById("status").style.color = "green";
+      }
+      else{
+        document.getElementById("status").innerHTML = "Disabled"
+        document.getElementById("status").style.color = "red";
+      }
+    });
+}
+
 // This function can be removed if you do not need to support IE
 function getTokenRedirect(request, endpoint) {
   return myMSALObj.acquireTokenSilent(request)
       .then((response) => {
-        console.log(response);
         if (response.accessToken) {
             console.log("access_token acquired at: " + new Date().toString());
             accessToken = response.accessToken;
@@ -65,9 +78,10 @@ function getTokenRedirect(request, endpoint) {
               } catch(err) {
                 console.log(err)
               } finally {
-                profileButton.classList.add('d-none');
+                // profileButton.classList.add('d-none');
                 disable.classList.remove('d-none');
                 enable.classList.remove('d-none');
+                getStatus(response.account.userName)
               }
             }
         }
