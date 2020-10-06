@@ -8,6 +8,7 @@ const disable = document.getElementById("disable");
 const profileButton = document.getElementById("seeProfile");
 const profileDiv = document.getElementById("profile-div");
 const loadingScreen = document.getElementById("loadingScreen");
+var loginData = null;
 
 
 function showWelcomeMessage(account) {
@@ -21,6 +22,7 @@ function showWelcomeMessage(account) {
 
 function updateUI(data, endpoint) {
   console.log('Graph API responded at: ' + new Date().toString());
+  loginData = data;
 
   if (endpoint === graphConfig.graphMeEndpoint) {
     const title = document.createElement('p');

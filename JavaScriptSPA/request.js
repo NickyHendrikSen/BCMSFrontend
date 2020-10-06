@@ -1,7 +1,7 @@
 var debounce = false;
 function enableAccount(){
   if(debounce)return;
-    debounce = false;
+    debounce = true;
     loadingScreen.classList.remove("d-none");
     postData(requestUrl + '/Contact/ChangeTransferStatus/enabled')
     .then(data => {
@@ -11,24 +11,37 @@ function enableAccount(){
         disable.classList.remove("d-none");
         enable.classList.add("d-none");
       }
-      debounce = true;
+      debounce = false;
+      console.log("Test")
       loadingScreen.classList.add("d-none");
     });
 }
 
 function disableAccount(){
   if(debounce)return;
-    debounce = false;
+    debounce = true;
     loadingScreen.classList.remove("d-none");
     postData(requestUrl + '/Contact/ChangeTransferStatus/disabled')
     .then(data => {
       if(data != null){
         document.getElementById("status").innerHTML = "Disabled"
         document.getElementById("status").style.color = "red";
-        disable.classList.remove("d-none");
-        enable.classList.add("d-none");
+        enable.classList.remove("d-none");
+        disable.classList.add("d-none");
       }
-      debounce = true;
+      debounce = false;
+      loadingScreen.classList.add("d-none");
+    });
+}
+
+function sync(){
+  if(debounce)return;
+    debounce = true;
+    loadingScreen.classList.remove("d-none");
+    postData(requestUrl + '/Contact/DirectSync/' + loginData.mail)
+    .then(data => {
+      alert("Success Sync");
+      debounce = false;
       loadingScreen.classList.add("d-none");
     });
 }

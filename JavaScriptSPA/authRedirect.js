@@ -28,7 +28,7 @@ function authRedirectCallBack(error, response) {
         } catch(err) {
           console.log(err)
         } finally {
-          profileButton.classList.add('d-none');
+          // profileButton.classList.add('d-none');
         }
       } else {
           console.log("token type is:" + response.tokenType);
