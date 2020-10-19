@@ -10,6 +10,7 @@ function enableAccount(){
         document.getElementById("status").style.color = "green";
         disable.classList.remove("d-none");
         enable.classList.add("d-none");
+        syncButton.innerText = "Sync";
       }
       debounce = false;
       console.log("Test")
@@ -28,6 +29,7 @@ function disableAccount(){
         document.getElementById("status").style.color = "red";
         enable.classList.remove("d-none");
         disable.classList.add("d-none");
+        syncButton.innerText = "Transfer Now";
       }
       debounce = false;
       loadingScreen.classList.add("d-none");

@@ -8,6 +8,7 @@ const disable = document.getElementById("disable");
 const profileButton = document.getElementById("seeProfile");
 const profileDiv = document.getElementById("profile-div");
 const loadingScreen = document.getElementById("loadingScreen");
+const syncButton = document.getElementById("sync");
 var loginData = null;
 
 

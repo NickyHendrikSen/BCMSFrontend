@@ -54,12 +54,14 @@ function getStatus(email){
       if(data == true){
         document.getElementById("status").innerHTML = "Enabled"
         document.getElementById("status").style.color = "green";
+        syncButton.innerText = "Sync";
         disable.classList.remove('d-none');
         enable.classList.add('d-none');
       }
       else{
         document.getElementById("status").innerHTML = "Disabled"
         document.getElementById("status").style.color = "red";
+        syncButton.innerText = "Transfer Now";
         enable.classList.remove('d-none');
         disable.classList.add('d-none');
       }
