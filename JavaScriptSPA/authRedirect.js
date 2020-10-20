@@ -54,7 +54,7 @@ function getStatus(email){
       if(data == true){
         document.getElementById("status").innerHTML = "Enabled"
         document.getElementById("status").style.color = "green";
-        syncButton.innerText = "Sync";
+        syncButton.innerText = "Transfer Now";
         disable.classList.remove('d-none');
         enable.classList.add('d-none');
       }
