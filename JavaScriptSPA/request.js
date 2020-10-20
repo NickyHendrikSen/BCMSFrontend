@@ -10,7 +10,7 @@ function enableAccount(){
         document.getElementById("status").style.color = "green";
         disable.classList.remove("d-none");
         enable.classList.add("d-none");
-        syncButton.innerText = "Sync";
+        syncButton.innerText = "Transfer Now";
       }
       debounce = false;
       console.log("Test")
@@ -42,7 +42,7 @@ function sync(){
     loadingScreen.classList.remove("d-none");
     postData(requestUrl + '/Contact/DirectSync/' + loginData.mail)
     .then(data => {
-      alert("Success Sync");
+      alert("Success Transfer");
       debounce = false;
       loadingScreen.classList.add("d-none");
     });
