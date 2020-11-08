@@ -13,7 +13,6 @@ var loginData = null;
 
 
 function showWelcomeMessage(account) {
-
     // Reconfiguring DOM elements
     cardDiv.classList.remove('d-none');
     welcomeDiv.innerHTML = `Welcome ${account.name}`;
@@ -25,6 +24,14 @@ function updateUI(data, endpoint) {
   console.log('Graph API responded at: ' + new Date().toString());
   loginData = data;
 
+
+  // Log the login
+  postData(requestUrl + '/Log/AttemptLoginLogging/' + data.mail)
+  .then(data => {
+    //Success Log the login data
+  });
+  
+  
   if (endpoint === graphConfig.graphMeEndpoint) {
     const title = document.createElement('p');
     title.innerHTML = "<strong>Title: </strong>" + data.jobTitle;

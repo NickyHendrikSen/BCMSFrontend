@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Log Reporting</title>
+</head>
+<body>
+    <div>
+        Start Date : 
+        <input type="date" id="startDate">
+    </div>
+    <div>
+        End Date : 
+        <input type="date" id="endDate">
+    </div>
+    <button onclick="getAllReport()">Get All Report</button>
+    <button onclick="getReportByDate()">Get Report By Date</button>
+    <!-- <div id="status">Loading</div> -->
+</body>
+<script type="text/javascript" src="https://alcdn.msauth.net/lib/1.4.0/js/msal.js" integrity="sha384-DqrejB/00ccJc4ufFWc+TA3ImOruMihWCj6Wu9hEzRUNdqt4180qlzT0mFa6/Zp2" crossorigin="anonymous"></script>
+<script src="../authConfig.js"></script>
+<script src="../graphConfig.js"></script>
+<script src="../request.js"></script>
+<script src="index.js"></script>
+</html>
