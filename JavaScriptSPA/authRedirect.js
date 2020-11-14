@@ -91,6 +91,7 @@ function getTokenRedirect(request, endpoint) {
       })
       .catch(error => {
           console.log("silent token acquisition fails. acquiring token using redirect");
+          signIn()
           // fallback to interaction when silent call fails
           loadingScreen.classList.add("d-none")
           return myMSALObj.acquireTokenRedirect(request);
