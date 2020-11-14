@@ -35,7 +35,7 @@ function authRedirectCallBack(error, response) {
 }
 
 if (myMSALObj.getAccount()) {
-  showWelcomeMessage(myMSALObj.getAccount());
+    showWelcomeMessage(myMSALObj.getAccount());
 }
 
 function signIn() {
@@ -44,6 +44,7 @@ function signIn() {
 
 function signOut() {
   myMSALObj.logout();
+  localStorage.removeItem("Auth")
 }
 
 function getStatus(email){
@@ -70,6 +71,7 @@ function getStatus(email){
 function getTokenRedirect(request, endpoint) {
   return myMSALObj.acquireTokenSilent(request)
       .then((response) => {
+        console.log(response)
         if (response.accessToken) {
             console.log("access_token acquired at: " + new Date().toString());
             accessToken = response.accessToken;
@@ -77,6 +79,7 @@ function getTokenRedirect(request, endpoint) {
             if (accessToken) {
               try {
                 callMSGraph(endpoint, accessToken, updateUI);
+                localStorage.setItem("Auth", response.accessToken)
               } catch(err) {
                 console.log(err)
               } finally {
@@ -91,7 +94,7 @@ function getTokenRedirect(request, endpoint) {
       })
       .catch(error => {
           console.log("silent token acquisition fails. acquiring token using redirect");
-          signIn()
+
           // fallback to interaction when silent call fails
           loadingScreen.classList.add("d-none")
           return myMSALObj.acquireTokenRedirect(request);
@@ -105,7 +108,8 @@ function seeProfile() {
 function getToken() {
   if (accessToken) {
     callMSGraph(graphConfig.graphMailEndpoint, accessToken, updateUI);
-  } else {
+  }
+  else {
     getTokenRedirect(tokenRequest, graphConfig.graphMailEndpoint);
   }
 }
