@@ -27,33 +27,13 @@ function authRedirectCallBack(error, response) {
 }
 
 function getAllReport(){
-    postDataDownload(requestUrl + '/Log/Report/' + email)
+    postDataDownload(requestUrl + '/User/Report/' + email)
     .then(response => response.blob())
         .then(blob => {
             var url = window.URL.createObjectURL(blob);
             var a = document.createElement('a');
             a.href = url;
-            a.download = "log-report.xlsx";
-            document.body.appendChild(a); // we need to append the element to the dom -> otherwise it will not work in firefox
-            a.click();    
-            a.remove();  //afterwards we remove the element again         
-    
-        }).catch(e => {
-            console.log(e);
-        }); 
-}
-
-function getReportByDate(){
-    var startDate = document.getElementById('startDate').value + " 00:00:00"
-    var endDate = document.getElementById('endDate').value + " 23:59:59"
-    console.log(startDate)
-    postDataDownload(requestUrl + '/Log/Report/' + email + '/'  + startDate + '/' + endDate)
-    .then(response => response.blob())
-        .then(blob => {
-            var url = window.URL.createObjectURL(blob);
-            var a = document.createElement('a');
-            a.href = url;
-            a.download = "log-report.xlsx";
+            a.download = "user-report.xlsx";
             document.body.appendChild(a); // we need to append the element to the dom -> otherwise it will not work in firefox
             a.click();    
             a.remove();  //afterwards we remove the element again         
