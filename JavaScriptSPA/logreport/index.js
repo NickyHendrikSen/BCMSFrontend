@@ -27,13 +27,16 @@ function authRedirectCallBack(error, response) {
 }
 
 function getAllReport(){
+    var currentDate = (new Date().getDate() < 10 ? '0' + new Date().getDate() : new Date().getDate()).toString() + 
+                        (new Date().getMonth()+1 < 10 ? '0' + new Date().getMonth()+1 : new Date().getMonth()+1).toString() +
+                        (new Date().getFullYear()).toString()
     postDataDownload(requestUrl + '/Log/Report/' + email)
     .then(response => response.blob())
         .then(blob => {
             var url = window.URL.createObjectURL(blob);
             var a = document.createElement('a');
             a.href = url;
-            a.download = "log-report.xlsx";
+            a.download = "log_report_" + currentDate + ".xlsx";
             document.body.appendChild(a); // we need to append the element to the dom -> otherwise it will not work in firefox
             a.click();    
             a.remove();  //afterwards we remove the element again         
@@ -46,14 +49,18 @@ function getAllReport(){
 function getReportByDate(){
     var startDate = document.getElementById('startDate').value + " 00:00:00"
     var endDate = document.getElementById('endDate').value + " 23:59:59"
-    console.log(startDate)
+
+    var currentDate = (new Date().getDate() < 10 ? '0' + new Date().getDate() : new Date().getDate()).toString() + 
+                        (new Date().getMonth()+1 < 10 ? '0' + new Date().getMonth()+1 : new Date().getMonth()+1).toString() +
+                        (new Date().getFullYear()).toString()
+
     postDataDownload(requestUrl + '/Log/Report/' + email + '/'  + startDate + '/' + endDate)
     .then(response => response.blob())
         .then(blob => {
             var url = window.URL.createObjectURL(blob);
             var a = document.createElement('a');
             a.href = url;
-            a.download = "log-report.xlsx";
+            a.download = "log_report_" + currentDate + ".xlsx";
             document.body.appendChild(a); // we need to append the element to the dom -> otherwise it will not work in firefox
             a.click();    
             a.remove();  //afterwards we remove the element again         
