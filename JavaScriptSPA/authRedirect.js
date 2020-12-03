@@ -44,7 +44,6 @@ function signIn() {
 
 function signOut() {
   myMSALObj.logout();
-  localStorage.removeItem("Auth")
 }
 
 function getStatus(email){
@@ -79,7 +78,6 @@ function getTokenRedirect(request, endpoint) {
             if (accessToken) {
               try {
                 callMSGraph(endpoint, accessToken, updateUI);
-                localStorage.setItem("Auth", response.accessToken)
               } catch(err) {
                 console.log(err)
               } finally {

@@ -37,9 +37,9 @@ function getAllReport(){
             var a = document.createElement('a');
             a.href = url;
             a.download = "log_report_" + currentDate + ".xlsx";
-            document.body.appendChild(a); // we need to append the element to the dom -> otherwise it will not work in firefox
+            document.body.appendChild(a);
             a.click();    
-            a.remove();  //afterwards we remove the element again         
+            a.remove(); 
     
         }).catch(e => {
             console.log(e);
@@ -61,9 +61,9 @@ function getReportByDate(){
             var a = document.createElement('a');
             a.href = url;
             a.download = "log_report_" + currentDate + ".xlsx";
-            document.body.appendChild(a); // we need to append the element to the dom -> otherwise it will not work in firefox
+            document.body.appendChild(a);
             a.click();    
-            a.remove();  //afterwards we remove the element again         
+            a.remove();       
     
         }).catch(e => {
             console.log(e);

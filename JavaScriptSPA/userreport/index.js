@@ -18,7 +18,7 @@ function authRedirectCallBack(error, response) {
             }
   
         } else if (response.tokenType === "access_token") {
-            console.log("test");
+            // console.log("test");
           // console.log("access_token acquired at: " + new Date().toString());
           accessToken = response.accessToken.toString();
           rawToken = response.idToken.rawIdToken.toString();
@@ -37,9 +37,9 @@ function getAllReport(){
             var a = document.createElement('a');
             a.href = url;
             a.download = "user_report_" + currentDate + ".xlsx";
-            document.body.appendChild(a); // we need to append the element to the dom -> otherwise it will not work in firefox
+            document.body.appendChild(a);
             a.click();    
-            a.remove();  //afterwards we remove the element again         
+            a.remove(); 
     
         }).catch(e => {
             console.log(e);
